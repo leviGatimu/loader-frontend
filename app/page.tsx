@@ -408,25 +408,72 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="border-t border-border/40 bg-card py-16 mt-20 relative overflow-hidden">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <div className="flex justify-center items-center gap-3 mb-8 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <div className="bg-primary p-1.5 rounded-lg text-white">
-              <Download className="w-4 h-4" />
+      <footer className="relative mt-20 border-t border-border/40 bg-card/30 backdrop-blur-md overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+        </div>
+        
+        <div className="max-w-6xl mx-auto px-6 pt-16 pb-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <div className="col-span-1 md:col-span-2">
+              <div className="flex items-center gap-3 mb-6 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                <div className="bg-primary p-2 rounded-xl text-white shadow-lg shadow-primary/20">
+                  <Download className="w-5 h-5" />
+                </div>
+                <span className="font-black text-2xl tracking-tighter text-foreground">Save<span className="text-primary">Media</span></span>
+              </div>
+              <p className="text-muted-foreground text-sm font-medium leading-relaxed max-w-sm">
+                The most reliable high-speed video downloader on the web. 
+                Experience seamless media extraction with zero ads and maximum privacy.
+              </p>
+              <div className="flex items-center gap-4 mt-8">
+                {['twitter', 'github', 'mail'].map((social) => (
+                  <button key={social} className="w-10 h-10 rounded-xl bg-secondary hover:bg-primary hover:text-white transition-all duration-300 flex items-center justify-center border border-border/50 group">
+                    <div className="w-5 h-5 group-hover:scale-110 transition-transform">
+                      {social === 'twitter' && <Globe className="w-full h-full" />}
+                      {social === 'github' && <Zap className="w-full h-full" />}
+                      {social === 'mail' && <Activity className="w-full h-full" />}
+                    </div>
+                  </button>
+                ))}
+              </div>
             </div>
-            <span className="font-black text-xl tracking-tighter text-foreground">Save<span className="text-primary">Media</span></span>
+
+            <div>
+              <h5 className="font-black text-xs uppercase tracking-[0.2em] text-foreground mb-6">Product</h5>
+              <ul className="space-y-4 text-sm font-bold text-muted-foreground">
+                <li><a href="#" className="hover:text-primary transition-colors">Video Downloader</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">MP3 Converter</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Browser Extension</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">API Access</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h5 className="font-black text-xs uppercase tracking-[0.2em] text-foreground mb-6">Support</h5>
+              <ul className="space-y-4 text-sm font-bold text-muted-foreground">
+                <li><a href="#" className="hover:text-primary transition-colors">Help Center</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Terms of Service</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Contact Us</a></li>
+              </ul>
+            </div>
           </div>
-          <p className="text-muted-foreground text-sm mb-10 max-w-md mx-auto font-medium leading-relaxed">
-            The world's most reliable high-speed video downloader. Always free, always fast.
-          </p>
-          <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 text-xs font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 mb-12">
-            <a href="#" className="hover:text-primary transition-colors">Privacy</a>
-            <a href="#" className="hover:text-primary transition-colors">Terms</a>
-            <a href="#" className="hover:text-primary transition-colors">API</a>
-            <a href="#" className="hover:text-primary transition-colors">Contact</a>
-          </div>
-          <div className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 flex items-center justify-center gap-2">
-            MADE WITH <Heart className="w-3 h-3 text-red-500 fill-current" /> BY SAVEMEDIA TEAM © 2026
+
+          <div className="pt-8 border-t border-border/20 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 flex items-center gap-2 order-2 md:order-1">
+              MADE WITH <Heart className="w-3 h-3 text-red-500 fill-current" /> BY SAVEMEDIA TEAM © 2026
+            </div>
+            <div className="flex items-center gap-6 order-1 md:order-2">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20">
+                <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                <span className="text-[10px] font-black text-green-600 dark:text-green-400 uppercase tracking-widest">Systems Online</span>
+              </div>
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20">
+                <ShieldCheck className="w-3.5 h-3.5 text-primary" />
+                <span className="text-[10px] font-black text-primary uppercase tracking-widest">Secure SSL</span>
+              </div>
+            </div>
           </div>
         </div>
       </footer>
