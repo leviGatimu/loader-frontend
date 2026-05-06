@@ -244,9 +244,10 @@ export default function Home() {
           </motion.div>
         </section>
 
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           {error && (
             <motion.div 
+              key="error-message"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
@@ -261,8 +262,10 @@ export default function Home() {
 
           {videoInfo && (
             <motion.div 
+              key="video-details"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
               className="bg-card border border-border/50 rounded-3xl p-6 md:p-10 shadow-2xl flex flex-col md:flex-row gap-10 overflow-hidden relative"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-[60px] pointer-events-none" />
@@ -424,7 +427,9 @@ export default function Home() {
         </div>
       </footer>
 
-      {downloadProgress && <ProgressBar progress={downloadProgress} status={downloading} />}
+      <AnimatePresence>
+        {downloadProgress && <ProgressBar key="download-progress" progress={downloadProgress} status={downloading} />}
+      </AnimatePresence>
     </div>
   );
 }
