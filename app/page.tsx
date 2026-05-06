@@ -11,7 +11,7 @@ import {
 import { useTheme } from "./components/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
+const BACKEND_URL = (process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000").replace(/\/$/, "");
 
 interface Format {
   format_id: string;
