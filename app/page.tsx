@@ -111,9 +111,15 @@ export default function Home() {
     setError(null);
     try {
       const response = await axios.post(`${BACKEND_URL}/fetch`, { url });
-      setVideoInfo(response.data);
+      if (response && response.data) {
+        setVideoInfo(response.data);
+      } else {
+        throw new Error("Empty response from server");
+      }
     } catch (e: any) { 
-      setError(e.response?.data?.error || "Unable to fetch video details. Please check the link and try again.");
+      const msg = e.response?.data?.error || e.message || "Connection failed";
+      setError(msg);
+      console.error("Fetch error details:", e);
     } finally { 
       setLoading(false); 
     }
