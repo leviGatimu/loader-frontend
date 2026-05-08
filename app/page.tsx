@@ -15,7 +15,7 @@ import {
 import { useTheme } from "./components/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
 
-const BACKEND_URL = "https://web-production-0264.up.railway.app";
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
 
 interface Format {
   format_id: string;
